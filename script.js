@@ -12,9 +12,18 @@ function getComputerChoice() {
     else return "scissors";
 }
 function playerSelection() {
-    let choice = prompt("Choose your weapon! Rock Paper Scissors?");
-    choice = choice.toLowerCase();
-    return choice;
+    let choice = null;
+    choice = prompt("Choose your weapon! Rock Paper Scissors?");
+    while (true) {
+        if (choice == "rock" || choice == "paper" || choice == "scissors") {
+            return choice;
+            break;
+        }
+        else {
+            choice = prompt("Wrong answer Try again! Choose your weapon! Rock Paper Scissors?");
+            choice = choice.toLowerCase();
+        }
+    }
 }
 getComputerChoice();
 playerSelection();
