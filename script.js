@@ -11,6 +11,10 @@ function getComputerChoice() {
     }
     else return "scissors";
 }
-
-
+function playerSelection() {
+    let choice = prompt("Choose your weapon! Rock Paper Scissors?");
+    choice = choice.toLowerCase();
+    return choice;
+}
 getComputerChoice();
+playerSelection();
