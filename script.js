@@ -26,32 +26,46 @@ function playerSelection() {
     }
 }
 function game() {
-    let compChoice = getComputerChoice();
-    let playerChoice = playerSelection();
-    let decision;
-    if (playerChoice == "scissors" && compChoice == "rock") {
-        decision = playerChoice + " vs " + compChoice + " You Lost! ";
-    }
-    else if (playerChoice == "scissors" && compChoice == "paper") {
-        decision = playerChoice + " vs " + compChoice + " You Win!";
-    }
-    else if (playerChoice == "rock" && compChoice == "paper") {
-        decision = playerChoice + " vs " + compChoice + " You lost!";
-    }
-    else if (playerChoice == "rock" && compChoice == "scissors") {
-        decision = playerChoice + " vs " + compChoice + " You win!";
-    }
-    else if (playerChoice == "paper" && compChoice == "rock") {
-        decision = playerChoice + " vs " + compChoice + " You win!";
-    }
-    else if (playerChoice == "paper" && compChoice == "scissors") {
-        decision = playerChoice + " vs " + compChoice + " You lost!";
-    }
-    else {
-        decision = playerChoice + " vs " + compChoice + " Its a Tie! " + "Lets Play again";
+    let humanScore = 0;
+    let compScore = 0;
+    while (true) {
+        let compChoice = getComputerChoice();
+        let playerChoice = playerSelection();
+        let decision;
+        if (playerChoice == "scissors" && compChoice == "rock") {
+            decision = playerChoice + " vs " + compChoice + " You Lost! ";
+            compScore++;
+        }
+        else if (playerChoice == "scissors" && compChoice == "paper") {
+            decision = playerChoice + " vs " + compChoice + " You Win!";
+            humanScore++;
+        }
+        else if (playerChoice == "rock" && compChoice == "paper") {
+            decision = playerChoice + " vs " + compChoice + " You lost!";
+            compScore++;
+        }
+        else if (playerChoice == "rock" && compChoice == "scissors") {
+            decision = playerChoice + " vs " + compChoice + " You win!";
+            humanScore++;
+        }
+        else if (playerChoice == "paper" && compChoice == "rock") {
+            decision = playerChoice + " vs " + compChoice + " You win!";
+            humanScore++;
+        }
+        else if (playerChoice == "paper" && compChoice == "scissors") {
+            decision = playerChoice + " vs " + compChoice + " You lost!";
+            compScore++;
+        }
+        else {
+            decision = playerChoice + " vs " + compChoice + " Its a Tie! ";
+        }
         alert(decision)
-        return game();
+        if (humanScore == 3) break;
+        else if (compScore == 3) break;
     }
-    return alert(decision);
+    if (humanScore == 3)
+        alert("You won with a score of (Human) " + humanScore + " - (Comp) " + compScore);
+    else
+        alert("You lost with a score of (Human) " + humanScore + " - (Comp) " + compScore);
 }
 game();
