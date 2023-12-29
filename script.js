@@ -25,5 +25,33 @@ function playerSelection() {
         }
     }
 }
-getComputerChoice();
-playerSelection();
+function game() {
+    let compChoice = getComputerChoice();
+    let playerChoice = playerSelection();
+    let decision;
+    if (playerChoice == "scissors" && compChoice == "rock") {
+        decision = playerChoice + " vs " + compChoice + " You Lost! ";
+    }
+    else if (playerChoice == "scissors" && compChoice == "paper") {
+        decision = playerChoice + " vs " + compChoice + " You Win!";
+    }
+    else if (playerChoice == "rock" && compChoice == "paper") {
+        decision = playerChoice + " vs " + compChoice + " You lost!";
+    }
+    else if (playerChoice == "rock" && compChoice == "scissors") {
+        decision = playerChoice + " vs " + compChoice + " You win!";
+    }
+    else if (playerChoice == "paper" && compChoice == "rock") {
+        decision = playerChoice + " vs " + compChoice + " You win!";
+    }
+    else if (playerChoice == "paper" && compChoice == "scissors") {
+        decision = playerChoice + " vs " + compChoice + " You lost!";
+    }
+    else {
+        decision = playerChoice + " vs " + compChoice + " Its a Tie! " + "Lets Play again";
+        alert(decision)
+        return game();
+    }
+    return alert(decision);
+}
+game();
