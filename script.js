@@ -13,59 +13,61 @@ function getComputerChoice() {
 }
 function playerSelection() {
     let choice = null;
-    choice = prompt("Choose your weapon! Rock Paper Scissors?");
-    while (true) {
-        if (choice == "rock" || choice == "paper" || choice == "scissors") {
-            return choice;
-            break;
-        }
-        else {
-            choice = prompt("Wrong answer Try again! Choose your weapon! Rock Paper Scissors?");
-            choice = choice.toLowerCase();
-        }
-    }
+    //     choice = prompt("Choose your weapon! Rock Paper Scissors?");
+    //     while (true) {
+    //         if (choice == "rock" || choice == "paper" || choice == "scissors") {
+    //             return choice;
+    //             break;
+    //         }
+    //         else {
+    //             choice = prompt("Wrong answer Try again! Choose your weapon! Rock Paper Scissors?");
+    //             choice = choice.toLowerCase();
+    //         }
+    //     }
 }
-function game() {
-    let humanScore = 0;
-    let compScore = 0;
-    while (true) {
-        let compChoice = getComputerChoice();
-        let playerChoice = playerSelection();
-        let decision;
-        if (playerChoice == "scissors" && compChoice == "rock") {
-            decision = playerChoice + " vs " + compChoice + " You Lost! ";
-            compScore++;
-        }
-        else if (playerChoice == "scissors" && compChoice == "paper") {
-            decision = playerChoice + " vs " + compChoice + " You Win!";
-            humanScore++;
-        }
-        else if (playerChoice == "rock" && compChoice == "paper") {
-            decision = playerChoice + " vs " + compChoice + " You lost!";
-            compScore++;
-        }
-        else if (playerChoice == "rock" && compChoice == "scissors") {
-            decision = playerChoice + " vs " + compChoice + " You win!";
-            humanScore++;
-        }
-        else if (playerChoice == "paper" && compChoice == "rock") {
-            decision = playerChoice + " vs " + compChoice + " You win!";
-            humanScore++;
-        }
-        else if (playerChoice == "paper" && compChoice == "scissors") {
-            decision = playerChoice + " vs " + compChoice + " You lost!";
-            compScore++;
-        }
-        else {
-            decision = playerChoice + " vs " + compChoice + " Its a Tie! ";
-        }
-        alert(decision)
-        if (humanScore == 3) break;
-        else if (compScore == 3) break;
+function game(playerChoice) {
+    // let humanScore = 0;
+    // let compScore = 0;
+
+    let compChoice = getComputerChoice();
+
+    let decision;
+    if (playerChoice == "scissors" && compChoice == "rock") {
+        decision = playerChoice + " vs " + compChoice + " You Lost! ";
     }
-    if (humanScore == 3)
-        alert("You won with a score of (Human) " + humanScore + " - (Comp) " + compScore);
-    else
-        alert("You lost with a score of (Human) " + humanScore + " - (Comp) " + compScore);
+    else if (playerChoice == "scissors" && compChoice == "paper") {
+        decision = playerChoice + " vs " + compChoice + " You Win!";
+    }
+    else if (playerChoice == "rock" && compChoice == "paper") {
+        decision = playerChoice + " vs " + compChoice + " You lost!";
+    }
+    else if (playerChoice == "rock" && compChoice == "scissors") {
+        decision = playerChoice + " vs " + compChoice + " You win!";
+    }
+    else if (playerChoice == "paper" && compChoice == "rock") {
+        decision = playerChoice + " vs " + compChoice + " You win!";
+    }
+    else if (playerChoice == "paper" && compChoice == "scissors") {
+        decision = playerChoice + " vs " + compChoice + " You lost!";
+    }
+    else {
+        decision = playerChoice + " vs " + compChoice + " Its a Tie! ";
+    }
+    let div = document.querySelector('div');
+    div.textContent = decision;
 }
-game();
+
+
+const btnRock = document.querySelector('#rock');
+
+btnRock.addEventListener('click', () => {
+    game('rock');
+})
+const btnPaper = document.querySelector('#paper');
+btnPaper.addEventListener('click', () => {
+    game('paper');
+})
+const btnScissors = document.querySelector('#scissors');
+btnScissors.addEventListener('click', () => {
+    game('scissors');
+})
