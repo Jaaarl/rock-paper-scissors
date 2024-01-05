@@ -16,6 +16,11 @@ function playerSelection() {
 }
 function game(playerChoice) {
 
+
+    const winner = document.querySelector('#winner');
+    if (compScore == 0 && humanScore == 0) {
+        winner.textContent = "";
+    }
     let compChoice = getComputerChoice();
 
     let decision;
@@ -47,21 +52,19 @@ function game(playerChoice) {
     else {
         decision = playerChoice + " vs " + compChoice + " Its a Tie! ";
     }
-    let div = document.querySelector('div');
-    div.textContent = decision;
-    //const score = document.querySelector('#score');
-    // score.textContent = "Human - " + humanScore + " AI - " + compScore;
-    const score = document.createElement('p')
-    score.textContent = "Human - " + humanScore + " AI - " + compScore;
 
-    div.appendChild(score);
+    result.textContent = decision;
+    let div = document.querySelector('div');
+    const score = document.querySelector('#score');
+    score.textContent = "Human - " + humanScore + " AI - " + compScore;
+    console.log(score);
+    // div.appendChild(score);
     if (compScore == 5 || humanScore == 5) {
-        let msg = document.createElement('h1');
+        let msg = document.querySelector('#winner');
         if (compScore == 5) msg.textContent = "AI won! Try again";
         else msg.textContent = "Human won! Try again";
         compScore = 0;
         humanScore = 0;
-        div.appendChild(msg);
     }
 
 }
@@ -70,7 +73,7 @@ function game(playerChoice) {
 const btnRock = document.querySelector('#rock');
 let humanScore = 0;
 let compScore = 0;
-
+let ctr = false
 btnRock.addEventListener('click', () => {
     game('rock');
 })
